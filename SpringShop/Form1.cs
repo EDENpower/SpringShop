@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-using System.Media; 
+using System.Media;
 
 
 namespace SpringShop
@@ -37,6 +37,7 @@ namespace SpringShop
 
 
 
+
         public SpringShop()
         {
             InitializeComponent();
@@ -61,25 +62,25 @@ namespace SpringShop
                 totalCake = cakePrice * numOfCake;
                 totalWand = wandPrice * NumOfWand;
                 totalFlower = flowerPrice * NumOfFlower;
-                 taxrate = 0.13;
+                taxrate = 0.13;
 
-                 subtotal = totalCake + totalFlower + totalWand;
-                 total = subtotal * (1 + taxrate);
-                 taxAmount = total - subtotal;
+                subtotal = totalCake + totalFlower + totalWand;
+                total = subtotal * (1 + taxrate);
+                taxAmount = total - subtotal;
 
                 //Display
-                subTotalLabel.Text = $"Sub Total:{subtotal.ToString("0.00")}";
-                totalLabel.Text = $"Total : {total.ToString("0.00")}";
-                taxLabel.Text = $"Tax : {taxAmount.ToString("0.00")}";
+                subTotalLabel.Text = $"Sub Total :  {subtotal.ToString("C")}";
+                totalLabel.Text = $"Total :      {total.ToString("C")}";
+                taxLabel.Text = $"Tax :        {taxAmount.ToString("C")}";
 
                 //Dialog 
-                BlobbyWelcome.Text = $"Yes yes *blorp* fine choices human :)";
+                blobbyWelcome.Text = $"Yes yes *blorp* fine choices human :)";
                 calculateButton.Enabled = false;
                 changeButton.Enabled = true;
             }
             catch
             {
-                BlobbyWelcome.Text = $"Sorry Blobby does not understand.";
+                blobbyWelcome.Text = $"Sorry Blobby does not understand.";
                 calculateButton.Enabled = true;
                 changeButton.Enabled = false;
 
@@ -91,77 +92,111 @@ namespace SpringShop
 
             }
         }
-    
+
 
         private void changeButton_Click(object sender, EventArgs e)
         {
 
-           
-            subtotal = totalCake + totalFlower + totalWand;
-            total = subtotal * (1 + taxrate);
-            taxAmount = total - subtotal;
-            tendered = Convert.ToDouble(snackAmount.Text);
-            change = tendered - total;
+
+            try
+            {
+
+
+                tendered = Convert.ToDouble(snackAmount.Text);
+                change = tendered - total;
 
 
 
-            //Display Change
+                //Display Change
 
-            changeOwed.Text = $"Blobby gives you: {change.ToString("0.00")}";
-                
-           //Diagloge 
-            BlobbyWelcome.Text = $"*BLURP!!* yummy yummy snack blobby loves snack thank you human <3!!";
-            printButton.Enabled = true;
+                changeOwed.Text = $"Blobby gives you: {change.ToString("0.00")}";
+
+                //Diagloge 
+                blobbyWelcome.Text = $"*BLURP!!* yummy yummy snack blobby loves snack thank you human <3!!";
+                printButton.Enabled = true;
+            }
+            catch
+            
+            {
+                blobbyWelcome.Text = $"Sorry Blobby does not understand.";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //receiptinput.Scale(170, 0);
             // receipt 
+            SoundPlayer printSound = new SoundPlayer(Properties.Resources.printSound);
+            printSound.Play();
             receiptinput.Text = $"Blobs Magical Shop";
             //receiptinput.Scale(170, 62);
             Refresh();
             Thread.Sleep(50);
             receiptinput.Text += $"\n\n\nOrder Number:26\n--------------------------❤";
-           
+
             //receiptinput.Scale(170, 124);
             Refresh();
             Thread.Sleep(50);
-            receiptinput.Text += $"\n\n\nSubTotal:{subtotal.ToString("0.00")}";
+            receiptinput.Text += $"\n\n\nSubTotal:   {subtotal.ToString("C")}";
             Refresh();
             Thread.Sleep(50);
-            receiptinput.Text += $"\n\n\nTotal : {total.ToString("0.00")}";
+            receiptinput.Text += $"\n\n\nTotal  :    {total.ToString("C")}";
             Refresh();
             Thread.Sleep(50);
-            receiptinput.Text += $"\n\n\nTax : {taxAmount.ToString("0.00")}";
+            receiptinput.Text += $"\n\n\nTax    :    {taxAmount.ToString("C")}";
             Refresh();
             Thread.Sleep(50);
-            receiptinput.Text += $"\n\n\nTender : {tendered.ToString("0.00")}";
+            receiptinput.Text += $"\n\n\nTender :    {tendered.ToString("C")}";
             Refresh();
             Thread.Sleep(50);
-            receiptinput.Text += $"\n\n\nChange {tendered - total}";
+            receiptinput.Text += $"\n\n\nChange :    {change.ToString("0.00")}";
             Refresh();
             Thread.Sleep(50);
             receiptinput.Text += $"\n\n\nThank you kind human \n have a nice day❤";
 
 
             //Text display
-            BlobbyWelcome.Text = $"This makes Blobby very pleased!";
-            
-           
+            blobbyWelcome.Text = $"This makes Blobby very pleased!";
 
+            //Button Disable
+            printButton.Enabled = false;
+            newOrder.Enabled = true;
 
-            
-        }
-
-        private void cakeBox_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void newOrder_Click(object sender, EventArgs e)
         {
+            //Begin New Order
+            printButton.Enabled = true;
+            newOrder.Enabled = false;
+
+
+            blobbyWelcome.Text = $"Buh bye *blorp*";
+
+            Refresh();
+            Thread.Sleep(300);
+            Application.Restart();
+            Environment.Exit(0);
+
+            //Text Display
+
+
+
+
+
+
 
         }
     }
 }
+
+
+
+
+
+
+
+
+
+

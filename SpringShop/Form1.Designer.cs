@@ -31,16 +31,16 @@ namespace SpringShop
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpringShop));
             this.blobby = new System.Windows.Forms.PictureBox();
-            this.textBox = new System.Windows.Forms.PictureBox();
-            this.BlobbyWelcome = new System.Windows.Forms.Label();
+            this.messageBox = new System.Windows.Forms.PictureBox();
+            this.blobbyWelcome = new System.Windows.Forms.Label();
             this.blobbyCake = new System.Windows.Forms.PictureBox();
-            this.CakeLabel = new System.Windows.Forms.Label();
+            this.cakeText = new System.Windows.Forms.Label();
             this.cakeBox = new System.Windows.Forms.TextBox();
             this.flower = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.flowerText = new System.Windows.Forms.Label();
             this.flowerBox = new System.Windows.Forms.TextBox();
             this.wand = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.wandText = new System.Windows.Forms.Label();
             this.wandBox = new System.Windows.Forms.TextBox();
             this.calculateButton = new System.Windows.Forms.Button();
             this.subTotalLabel = new System.Windows.Forms.Label();
@@ -54,8 +54,9 @@ namespace SpringShop
             this.changeOwed = new System.Windows.Forms.Label();
             this.printButton = new System.Windows.Forms.Button();
             this.receiptinput = new System.Windows.Forms.Label();
+            this.newOrder = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.blobby)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.messageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blobbyCake)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flower)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wand)).BeginInit();
@@ -73,25 +74,25 @@ namespace SpringShop
             this.blobby.TabIndex = 0;
             this.blobby.TabStop = false;
             // 
-            // textBox
+            // messageBox
             // 
-            this.textBox.BackColor = System.Drawing.Color.Transparent;
-            this.textBox.Image = ((System.Drawing.Image)(resources.GetObject("textBox.Image")));
-            this.textBox.Location = new System.Drawing.Point(467, 220);
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(531, 183);
-            this.textBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.textBox.TabIndex = 1;
-            this.textBox.TabStop = false;
+            this.messageBox.BackColor = System.Drawing.Color.Transparent;
+            this.messageBox.Image = ((System.Drawing.Image)(resources.GetObject("messageBox.Image")));
+            this.messageBox.Location = new System.Drawing.Point(467, 220);
+            this.messageBox.Name = "messageBox";
+            this.messageBox.Size = new System.Drawing.Size(531, 183);
+            this.messageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.messageBox.TabIndex = 1;
+            this.messageBox.TabStop = false;
             // 
-            // BlobbyWelcome
+            // blobbyWelcome
             // 
-            this.BlobbyWelcome.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BlobbyWelcome.Location = new System.Drawing.Point(645, 280);
-            this.BlobbyWelcome.Name = "BlobbyWelcome";
-            this.BlobbyWelcome.Size = new System.Drawing.Size(203, 71);
-            this.BlobbyWelcome.TabIndex = 2;
-            this.BlobbyWelcome.Text = "*Blurp* ... \"Oh! Hello Human, please buy Blobby\'s things Blobby needs snack ❤\"";
+            this.blobbyWelcome.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blobbyWelcome.Location = new System.Drawing.Point(645, 280);
+            this.blobbyWelcome.Name = "blobbyWelcome";
+            this.blobbyWelcome.Size = new System.Drawing.Size(203, 71);
+            this.blobbyWelcome.TabIndex = 2;
+            this.blobbyWelcome.Text = "*Blurp* ... \"Oh! Hello Human, please buy Blobby\'s things Blobby needs snack ❤\"";
             // 
             // blobbyCake
             // 
@@ -104,24 +105,23 @@ namespace SpringShop
             this.blobbyCake.TabIndex = 3;
             this.blobbyCake.TabStop = false;
             // 
-            // CakeLabel
+            // cakeText
             // 
-            this.CakeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.CakeLabel.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CakeLabel.Location = new System.Drawing.Point(79, 26);
-            this.CakeLabel.Name = "CakeLabel";
-            this.CakeLabel.Size = new System.Drawing.Size(100, 54);
-            this.CakeLabel.TabIndex = 4;
-            this.CakeLabel.Text = "Blobby\'s healing cake ❤";
+            this.cakeText.BackColor = System.Drawing.Color.Transparent;
+            this.cakeText.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cakeText.Location = new System.Drawing.Point(79, 26);
+            this.cakeText.Name = "cakeText";
+            this.cakeText.Size = new System.Drawing.Size(100, 54);
+            this.cakeText.TabIndex = 4;
+            this.cakeText.Text = "Blobby\'s healing cake ❤";
             // 
             // cakeBox
             // 
-            this.cakeBox.Location = new System.Drawing.Point(161, 43);
+            this.cakeBox.Location = new System.Drawing.Point(161, 30);
             this.cakeBox.Name = "cakeBox";
             this.cakeBox.Size = new System.Drawing.Size(34, 20);
             this.cakeBox.TabIndex = 5;
             this.cakeBox.Text = "0";
-            this.cakeBox.TextChanged += new System.EventHandler(this.cakeBox_TextChanged);
             // 
             // flower
             // 
@@ -134,19 +134,19 @@ namespace SpringShop
             this.flower.TabIndex = 6;
             this.flower.TabStop = false;
             // 
-            // label1
+            // flowerText
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(79, 88);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 46);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Blobby\'s MP flower ❤";
+            this.flowerText.BackColor = System.Drawing.Color.Transparent;
+            this.flowerText.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowerText.Location = new System.Drawing.Point(79, 88);
+            this.flowerText.Name = "flowerText";
+            this.flowerText.Size = new System.Drawing.Size(76, 46);
+            this.flowerText.TabIndex = 7;
+            this.flowerText.Text = "Blobby\'s MP flower ❤";
             // 
             // flowerBox
             // 
-            this.flowerBox.Location = new System.Drawing.Point(161, 114);
+            this.flowerBox.Location = new System.Drawing.Point(161, 101);
             this.flowerBox.Name = "flowerBox";
             this.flowerBox.Size = new System.Drawing.Size(34, 20);
             this.flowerBox.TabIndex = 8;
@@ -163,19 +163,19 @@ namespace SpringShop
             this.wand.TabIndex = 9;
             this.wand.TabStop = false;
             // 
-            // label3
+            // wandText
             // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(79, 166);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 49);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Blobby\'s bubble wand ❤ ";
+            this.wandText.BackColor = System.Drawing.Color.Transparent;
+            this.wandText.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wandText.Location = new System.Drawing.Point(79, 166);
+            this.wandText.Name = "wandText";
+            this.wandText.Size = new System.Drawing.Size(87, 49);
+            this.wandText.TabIndex = 11;
+            this.wandText.Text = "Blobby\'s bubble wand ❤ ";
             // 
             // wandBox
             // 
-            this.wandBox.Location = new System.Drawing.Point(161, 175);
+            this.wandBox.Location = new System.Drawing.Point(161, 177);
             this.wandBox.Name = "wandBox";
             this.wandBox.Size = new System.Drawing.Size(34, 20);
             this.wandBox.TabIndex = 12;
@@ -324,7 +324,20 @@ namespace SpringShop
             this.receiptinput.Name = "receiptinput";
             this.receiptinput.Size = new System.Drawing.Size(0, 16);
             this.receiptinput.TabIndex = 27;
-            this.receiptinput.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // newOrder
+            // 
+            this.newOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.newOrder.Enabled = false;
+            this.newOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newOrder.Font = new System.Drawing.Font("NSimSun", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newOrder.ForeColor = System.Drawing.Color.White;
+            this.newOrder.Location = new System.Drawing.Point(224, 336);
+            this.newOrder.Name = "newOrder";
+            this.newOrder.Size = new System.Drawing.Size(102, 25);
+            this.newOrder.TabIndex = 28;
+            this.newOrder.Text = " NEW ORDER";
+            this.newOrder.Click += new System.EventHandler(this.newOrder_Click);
             // 
             // SpringShop
             // 
@@ -332,6 +345,7 @@ namespace SpringShop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(926, 415);
+            this.Controls.Add(this.newOrder);
             this.Controls.Add(this.receiptinput);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.changeOwed);
@@ -345,21 +359,22 @@ namespace SpringShop
             this.Controls.Add(this.subTotalLabel);
             this.Controls.Add(this.calculateButton);
             this.Controls.Add(this.wandBox);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.wandText);
             this.Controls.Add(this.wand);
             this.Controls.Add(this.flowerBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.flowerText);
             this.Controls.Add(this.flower);
             this.Controls.Add(this.cakeBox);
-            this.Controls.Add(this.CakeLabel);
+            this.Controls.Add(this.cakeText);
             this.Controls.Add(this.blobbyCake);
-            this.Controls.Add(this.BlobbyWelcome);
-            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.blobbyWelcome);
+            this.Controls.Add(this.messageBox);
             this.Controls.Add(this.blobby);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SpringShop";
-            this.Text = "Blobs Magical Shop";
+            this.Text = "BLOBBY\'S SPRING SHOP!";
             ((System.ComponentModel.ISupportInitialize)(this.blobby)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.messageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.blobbyCake)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.flower)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wand)).EndInit();
@@ -372,16 +387,16 @@ namespace SpringShop
         #endregion
 
         private System.Windows.Forms.PictureBox blobby;
-        private System.Windows.Forms.PictureBox textBox;
-        private System.Windows.Forms.Label BlobbyWelcome;
+        private System.Windows.Forms.PictureBox messageBox;
+        private System.Windows.Forms.Label blobbyWelcome;
         private System.Windows.Forms.PictureBox blobbyCake;
-        private System.Windows.Forms.Label CakeLabel;
+        private System.Windows.Forms.Label cakeText;
         private System.Windows.Forms.TextBox cakeBox;
         private System.Windows.Forms.PictureBox flower;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label flowerText;
         private System.Windows.Forms.TextBox flowerBox;
         private System.Windows.Forms.PictureBox wand;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label wandText;
         private System.Windows.Forms.TextBox wandBox;
         private System.Windows.Forms.Button calculateButton;
         private System.Windows.Forms.Label subTotalLabel;
@@ -395,6 +410,7 @@ namespace SpringShop
         private System.Windows.Forms.Label changeOwed;
         private System.Windows.Forms.Button printButton;
         private System.Windows.Forms.Label receiptinput;
+        private System.Windows.Forms.Label newOrder;
     }
 }
 
